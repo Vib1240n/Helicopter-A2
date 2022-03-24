@@ -13,7 +13,7 @@ public class River extends Fixed{
     public River() {
 		Location = new Point(0, Game.Disp_H - 1300);
 		river_height = 300;
-		river_width = Game.Disp_W;
+		river_width = Game.Disp_W - 10;
 	}
 
     /**
@@ -35,8 +35,16 @@ public class River extends Fixed{
      */
 	@Override
 	public void draw(Graphics g, Point containerOrigin) {
+        g.setColor(ColorUtil.GREEN);
+        g.drawString("X: " +containerOrigin.getX() + "Y: "+ containerOrigin.getY(), containerOrigin.getX(), containerOrigin.getY());
+        g.setColor(ColorUtil.GREEN);
+
+        g.drawString("X: " + Location.getX() + "Y: "+ Location.getY(), Location.getX(), Location.getY());
+
+        g.drawString("X: " + (Location.getX() + river_width) + " Y: "+ (Location.getY() + river_height), Location.getX() + river_width - 200, Location.getY() + river_height);
+
 		g.setColor(ColorUtil.BLUE);
-        g.drawRect(containerOrigin.getX(), containerOrigin.getY(), river_width,
+        g.drawRect(Location.getX(), Location.getY(), river_width,
                 river_height);
 	}
 }

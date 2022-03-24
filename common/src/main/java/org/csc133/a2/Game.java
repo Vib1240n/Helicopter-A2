@@ -31,17 +31,17 @@ public class Game extends Form implements Runnable{
 		mapview = new Mapview(world);
         tick = 0;
         timer = new UITimer(this);
-		//setTitle("Hornets");
+		setTitle("Hornets");
 		this.setLayout(new BorderLayout());
 		this.getStyle().setBgColor(ColorUtil.BLACK);
 		this.add(BorderLayout.CENTER, mapview);
         timer.schedule(100, true, this);
-        addKeyListener('Q', (evt) -> new exit(world));
-        addKeyListener(-93, (evt) -> new TurnLeftCommand(world));
-        addKeyListener(-94, (evt) -> new TurnRightCommand(world));
-        addKeyListener(-91, (evt) -> new Accelerate(world));
-        addKeyListener(-92, (evt) -> new Brake(world));
-        addKeyListener('d', (evt) -> new Drink(world));
+        addKeyListener('Q', new exit(world));
+        addKeyListener(-93, new TurnLeftCommand(world));
+        addKeyListener(-94, new TurnRightCommand(world));
+        addKeyListener(-91, new Accelerate(world));
+        addKeyListener(-92, new Brake(world));
+        addKeyListener('d', new Drink(world));
         //addKeyListener('f', (evt) -> Fire.extinguishFire());
 		this.show();
 

@@ -57,38 +57,6 @@ public class Helicopter extends Movable implements Steerable{
         fuel = 12000;
     }
 
-//    public static void movement(int input) {
-//        /*
-//         * movements
-//         * //Separate all the methods
-//         */
-//        switch (input) {
-//            case -92 /* back */:
-//                if (speed > 0) {
-//                    speed--;
-//                }
-//                break;
-//            case -91 /* Forward */:
-//                if (speed < 10) {
-//                    speed++;
-//                }
-//                break;
-//            case -93 /* Left */:
-//                angle += Math.toRadians(15);
-//                endX = (int) (endX + Math.cos(angle));
-//                endY = (int) (endY - Math.sin(angle));
-//                break;
-//            case -94 /* Right */:
-//                angle -= Math.toRadians(15);
-//                endY = (int) (endX - Math.sin(angle));
-//                endX = (int) (endY + Math.cos(angle));
-//                break;
-//            default:
-//
-//        }
-//
-//    }
-
 	public void moveForward(){
 		if (speed < 10) {
 			speed++;
@@ -127,7 +95,6 @@ public class Helicopter extends Movable implements Steerable{
         endX = (int) (location.getX() + Math.cos(angle) + heli_radius * 3);
         fuel -= Math.max(startX, startY) * Math.tan(angle);
         setFuel(fuel);
-
     }
 
     public void isCollison() {
