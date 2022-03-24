@@ -5,5 +5,7 @@ import com.codename1.ui.geom.Point;
 
 public abstract class Movable extends GameObjects {
 
-	public abstract void draw(Graphics g, Point containerOrigin);
+	public Movable(){
+		super();
+	}
 }

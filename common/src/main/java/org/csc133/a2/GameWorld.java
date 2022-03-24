@@ -2,9 +2,11 @@ package org.csc133.a2;
 
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.gameobjects.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,8 +16,8 @@ public class GameWorld extends Form{
     private int fire_size_center;
     private int fire_size_left;
     private int fire_size_right;
-    private CopyOnWriteArrayList<Fire> fires;
-	private CopyOnWriteArrayList<GameObjects> objs;
+    private ArrayList<Fire> fires;
+	private ArrayList<GameObjects> objs;
     Helicopter heli;
     Point location_left;
     Point location_right;
@@ -25,6 +27,7 @@ public class GameWorld extends Form{
     Fire fire_center;
     Fire fire_right;
     Fire fire_left;
+	private Dimension size;
 
 	public void init(){
 		/*
@@ -34,17 +37,16 @@ public class GameWorld extends Form{
 		pad = new Helipad();
 		river = new River();
 		rand = random.nextInt(200);
-		fires = new CopyOnWriteArrayList<Fire>();
-		objs = new CopyOnWriteArrayList<GameObjects>();
+		fires = new ArrayList<Fire>();
+		objs = new ArrayList<GameObjects>();
 		/*
 		 * Fire Locations
 		 */
 		location_left =
-				new Point((int) ((pad.getCenter().getX() - Game.Disp_H / 2) + rand),
-						(int) ((pad.getCenter().getY() - Game.Disp_W) + rand));
-		location_right = new Point((int) ((pad.getCenter().getX() - Game.Disp_H / 2) + rand), (int) ((pad.getCenter().getY() - Game.Disp_W / 3) + rand)); //
+				new Point((pad.getCenter().getX() - Game.Disp_H / 2) + rand, (pad.getCenter().getY() - Game.Disp_W) + rand);
+		location_right = new Point((pad.getCenter().getX() - Game.Disp_H / 2) + rand, (pad.getCenter().getY() - Game.Disp_W / 3) + rand); //
 		// Showing up on screen
-		location_center = new Point((int) ((pad.getCenter().getX() + Game.Disp_H / 8) + rand), (int) ((pad.getCenter().getY() - Game.Disp_W / 3) + rand));
+		location_center = new Point((pad.getCenter().getX() + Game.Disp_H / 8) + rand, (pad.getCenter().getY() - Game.Disp_W / 3) + rand);
 		/*
 		 * Fire Sizes
 		 */
@@ -69,17 +71,17 @@ public class GameWorld extends Form{
     public GameWorld() {
 
 	}
-	public CopyOnWriteArrayList<GameObjects> getGameObjectCollection(){
+	public ArrayList<GameObjects> getGameObjectCollection(){
 		return objs;
 	}
     public void quit() {
         Display.getInstance().exitApplication();
     }
     public void steerLeft(){
-		heli.Left();
+		heli.steerLeft();
 	}
 	public void steerRight(){
-		heli.Right();
+		heli.steerRight();
 	}
 	public void Accelerate(){
 		heli.moveForward();
@@ -90,17 +92,21 @@ public class GameWorld extends Form{
 	public void Drink(){
 		heli.fillTank();
 	}
-    public void updateTick(int timer) {
-        Helicopter.updateForward();
-        Helicopter.isCollison();
-        Helicopter.isCollisionFire(fire_center);
-        Helicopter.isCollisionFire(fire_left);
-        Helicopter.isCollisionFire(fire_right);
-        if (timer % 20 == 0) {
-            for (int i = 0; i < fires.size(); i++) {
-                fires.get(i).grow_fire();
 
-            }
-        }
+	public void setDimension(Dimension size){
+		this.size = size;
+	}
+    public void updateTick(int timer) {
+        heli.updateForward();
+//        heli.isCollison();
+//        heli.isCollisionFire(fire_center);
+//        heli.isCollisionFire(fire_left);
+//        heli.isCollisionFire(fire_right);
+//        if (timer % 20 == 0) {
+//            for (int i = 0; i < fires.size(); i++) {
+//                fires.get(i).grow_fire();
+//
+//            }
+//        }
     }
 }

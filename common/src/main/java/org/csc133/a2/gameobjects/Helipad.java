@@ -7,8 +7,8 @@ import org.csc133.a2.Game;
 
 public class Helipad extends Fixed {
 	public Point centerLocation;
-	private int padSize;
-	private int radius;
+	private final int padSize;
+	private final int radius;
 	protected int boxSize;
 	protected double fuel;
 	Point location;
@@ -38,7 +38,7 @@ public class Helipad extends Fixed {
 	@Override
 	public void draw(Graphics g, Point containerOrigin) {
 		g.setColor(ColorUtil.GRAY);
-		g.drawRect((int) containerOrigin.getX(), (int) containerOrigin.getY(), 200, 200);
+		g.drawRect(location.getX(), location.getY(), 200, 200);
 
 		/*
 		 * Fuel label drawing

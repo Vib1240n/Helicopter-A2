@@ -7,7 +7,7 @@ import org.csc133.a2.GameWorld;
 
 public class TurnLeftCommand extends Command implements ActionListener {
 
-    private GameWorld gw;
+    private final GameWorld gw;
 
     public TurnLeftCommand(GameWorld gw){
         super("Left");

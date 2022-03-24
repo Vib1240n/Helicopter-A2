@@ -8,7 +8,7 @@ import com.codename1.system.Lifecycle;
  */
 public class AppMain extends Lifecycle {
     @Override
-    public void start() {
+    public void runApp() {
         new Game();
     }
 

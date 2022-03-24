@@ -4,16 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="">
+    <list default="true" id="336d32c5-6f4b-4a8f-b637-9fea310958e7" name="Default Changelist" comment="Build Failure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/AppMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/AppMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/GameWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/GameWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Fixed.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Fixed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/GameObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/GameObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/Fight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/TurnLeftCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/TurnLeftCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/commands/exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Fire.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Fire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Helicopter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Helicopter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Helipad.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Helipad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/gameobjects/Movable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/interfaces/Steerable.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/interfaces/Steerable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/interfaces/drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/interfaces/drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/views/Mapview.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/org/csc133/a2/views/Mapview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/HornetsHfd-A2-common-1.0-SNAPSHOT-tests.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/HornetsHfd-A2-common-1.0-SNAPSHOT-tests.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/HornetsHfd-A2-common-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/HornetsHfd-A2-common-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/AppMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/AppMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/GameWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/GameWorld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/Fight.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/Fight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/TurnLeftCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/TurnLeftCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/exit.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/commands/exit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Helicopter.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Helicopter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Helipad.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Helipad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Movable.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/gameobjects/Movable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/interfaces/Steerable.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/interfaces/Steerable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/views/Mapview.class" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/classes/org/csc133/a2/views/Mapview.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/codenameone/simulator.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/target/compliance-check.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/compliance-check.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javase/target/HornetsHfd-A2-javase-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/javase/target/HornetsHfd-A2-javase-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,16 +85,19 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.14306152" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
   </component>
   <component name="RecentsManager">
@@ -801,11 +825,55 @@
       <option name="presentableId" value="Default" />
       <updated>1613589489573</updated>
       <workItem from="1647973550365" duration="18157000" />
-      <workItem from="1648084114554" duration="1382000" />
+      <workItem from="1648084114554" duration="5169000" />
     </task>
+    <task id="LOCAL-00001" summary="Build Failure">
+      <created>1648085787802</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648085787802</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Build Failure">
+      <created>1648085810962</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648085810962</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Build Failure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Build Failure" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/common/src/main/java/org/csc133/a2/Game.java</url>
+          <line>40</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

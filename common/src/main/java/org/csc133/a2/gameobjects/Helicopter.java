@@ -18,7 +18,7 @@ public class Helicopter extends Movable implements Steerable{
     // private static int fire_size;
     // private static int fire_radius;
     private static int heli_radius;
-	private Helipad heli;
+	private final Helipad heli;
     private static float fuel;
     private static int speed;
     private static double angle;
@@ -29,7 +29,7 @@ public class Helicopter extends Movable implements Steerable{
     private static int water_tank;
     private static boolean isColliding;
     private static boolean isCollidingfire;
-	private int boxSize;
+	private final int boxSize;
     private static Random rand;
     private final int heli_size;
 
@@ -49,10 +49,10 @@ public class Helicopter extends Movable implements Steerable{
         heli_size = 35;
         heli_radius = heli_size / 2;
         angle = Math.toRadians(90);
-        endX = (int) location.getX();
-        endY = (int) (location.getY() + heli_radius * 3);
-        startX = (int) location.getX();
-        startY = (int) location.getY();
+        endX = location.getX();
+        endY = location.getY() + heli_radius * 3;
+        startX = location.getX();
+        startY = location.getY();
         rand = new Random();
         fuel = 12000;
     }
@@ -100,14 +100,15 @@ public class Helicopter extends Movable implements Steerable{
 			speed--;
 		}
 	}
-
-	public void Left(){
+	@Override
+	public void steerLeft(){
 		angle += Math.toRadians(15);
 		endX = (int) (endX + Math.cos(angle));
 		endY = (int) (endY - Math.sin(angle));
 	}
 
-	public void Right(){
+	@Override
+	public void steerRight(){
 		angle -= Math.toRadians(15);
 		endY = (int) (endX - Math.sin(angle));
 		endX = (int) (endY + Math.cos(angle));
@@ -117,11 +118,11 @@ public class Helicopter extends Movable implements Steerable{
         return water_tank;
     }
 
-    public static void updateForward() {
+    public void updateForward() {
         location.setX((int) (location.getX() + Math.cos(angle) * speed));
         location.setY((int) (location.getY() - Math.sin(angle) * speed));
-        startX = (int) location.getX();
-        startY = (int) location.getY();
+        startX = location.getX();
+        startY = location.getY();
         endY = (int) (location.getY() - Math.sin(angle));
         endX = (int) (location.getX() + Math.cos(angle) + heli_radius * 3);
         fuel -= Math.max(startX, startY) * Math.tan(angle);
@@ -129,7 +130,7 @@ public class Helicopter extends Movable implements Steerable{
 
     }
 
-    public static void isCollison() {
+    public void isCollison() {
         if (startX > river_location.getX() && startX < (river_location.getX()
                 + river.get_river_width())) {
             isColliding = startY > river_location.getY() &&
@@ -139,14 +140,14 @@ public class Helicopter extends Movable implements Steerable{
         }
     }
 
-    public static void isCollisionFire(Fire fire) {
+    public void isCollisionFire(Fire fire) {
 
         if (startX > fire.location().getX() && startX < (fire.location().getX()
                 + fire.size())) {
             isCollidingfire = startY > fire.location().getY() &&
                     startY < fire.location().getY() + fire.size();
             if (isCollidingfire && fire.size() > 0) {
-                fire.extinguishFire();
+                Fire.extinguishFire();
                 water_tank = 0;
             }
         } // else{
@@ -165,13 +166,13 @@ public class Helicopter extends Movable implements Steerable{
         return (int) fuel;
     }
 
-    protected static void setFuel(float fuel) {
+    protected void setFuel(float fuel) {
         fuel = fuel;
     }
 
     @Override
     public void draw(Graphics g, Point containerOrigin) {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method stub add container origin
         g.setFont(Game.font);
         g.setColor(ColorUtil.YELLOW);
         g.fillArc(startX - heli_radius, startY - heli_radius, heli_size,
@@ -181,13 +182,6 @@ public class Helicopter extends Movable implements Steerable{
         g.drawString("Speed: " + speed, startX + 15, startY + 15);
 
         g.setColor(ColorUtil.YELLOW);
-        g.drawString("Water: " + water_tank,
-				(int) (heli.getCenter().getX() - boxSize / 2),
-				(int) ((heli.getCenter().getY() + 40) + boxSize / 2));
+        g.drawString("Water: " + water_tank, heli.getCenter().getX() - boxSize / 2, (heli.getCenter().getY() + 40) + boxSize / 2);
     }
-
-	@Override
-	public void steerLeft() {
-		Steerable.super.steerLeft();
-	}
 }

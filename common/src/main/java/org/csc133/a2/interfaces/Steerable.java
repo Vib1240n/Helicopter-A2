@@ -1,7 +1,6 @@
 package org.csc133.a2.interfaces;
 
 public interface Steerable {
-    default void steerLeft(){
-
-	}
+    void steerLeft();
+	void steerRight();
 }

@@ -6,7 +6,7 @@ import com.codename1.ui.events.ActionListener;
 import org.csc133.a2.GameWorld;
 
 public class Fight extends Command implements ActionListener {
-	private GameWorld gw;
+	private final GameWorld gw;
 	public Fight(GameWorld gw){
 		super("Fight");
 		this.gw = gw;

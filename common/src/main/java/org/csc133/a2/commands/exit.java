@@ -6,7 +6,7 @@ import com.codename1.ui.events.ActionListener;
 import org.csc133.a2.GameWorld;
 
 public class exit extends Command implements ActionListener {
-	private GameWorld gw;
+	private final GameWorld gw;
 
 	public exit(GameWorld gw){
 		super("Exit");

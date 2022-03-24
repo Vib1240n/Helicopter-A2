@@ -22,7 +22,7 @@ public class Fire {
 
 	public Fire(int fire_size, Point p, Helicopter helicopter) {
 		Location = p;
-		this.fire_size = fire_size;
+		Fire.fire_size = fire_size;
 		heli = helicopter;
 
 	}
