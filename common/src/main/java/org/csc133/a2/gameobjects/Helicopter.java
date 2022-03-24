@@ -1,13 +1,12 @@
 package org.csc133.a2.gameobjects;
 
-import java.util.Random;
-
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
-
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
 import org.csc133.a2.interfaces.Steerable;
+
+import java.util.Random;
 
 
 public class Helicopter extends Movable implements Steerable{

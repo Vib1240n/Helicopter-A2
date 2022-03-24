@@ -7,7 +7,6 @@ import com.codename1.ui.Graphics;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.util.UITimer;
 import org.csc133.a2.commands.*;
-import org.csc133.a2.gameobjects.Fire;
 import org.csc133.a2.views.ControlCluster;
 import org.csc133.a2.views.GlassCockpit;
 import org.csc133.a2.views.Mapview;
@@ -31,7 +30,7 @@ public class Game extends Form implements Runnable{
 		mapview = new Mapview(world);
         tick = 0;
         timer = new UITimer(this);
-		setTitle("Hornets");
+		//setTitle("Hornets");
 		this.setLayout(new BorderLayout());
 		this.add(BorderLayout.CENTER, mapview);
         timer.schedule(100, true, this);

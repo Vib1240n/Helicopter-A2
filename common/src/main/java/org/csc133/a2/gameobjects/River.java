@@ -4,7 +4,6 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
-import org.csc133.a2.interfaces.drawable;
 
 public class River extends Fixed{
     Point Location;
