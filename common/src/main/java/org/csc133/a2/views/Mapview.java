@@ -20,6 +20,8 @@ public class Mapview extends Container {
 		// set dimension = create new dimension = actual play area
 		gw.setDimension(new Dimension(this.getWidth(), this.getHeight()));
 		gw.init();
+		System.err.println("this.getWidth: "+this.getWidth());
+		System.err.println("this.getHeight: "+this.getHeight());
 	}
 
 	@Override

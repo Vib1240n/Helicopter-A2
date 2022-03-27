@@ -2,23 +2,27 @@ package org.csc133.a2.gameobjects;
 
 import java.util.ArrayList;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 
 public class building extends Fixed {
-
-    private ArrayList<building> buildings;
     private int building_height;
     private int building_width;
-    public building(ArrayList<building> buildings){
-        building_height = 100;
-        building_width = 300;
-        buildings = new ArrayList<building>();
-        this.buildings = buildings;
+    private Point location;
+
+    public building(Point location, int height, int width){
+        this.building_height = height;
+        this.building_width = width;
+        this.location = location;
     }
-    // method setFireInBuilding(Fire f){ f.start() )
-        public void draw(Graphics g, Point containerOrigin){
-            
-        }
+    public void setFireInBuilding(Fire f){ 
+         
+    }
+
+    public void draw(Graphics g, Point containerOrigin){
+        g.setColor(ColorUtil.rgb(255, 0, 0));
+        g.drawRect(location.getX(), location.getY(), building_width, building_height);
+    }
 
 }

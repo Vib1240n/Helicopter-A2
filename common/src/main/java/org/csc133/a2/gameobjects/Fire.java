@@ -4,29 +4,33 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
+import org.csc133.a2.gameobjects.*;
 
 import java.util.Random;
 
-public class Fire {
+public class Fire extends Fixed {
 
 	Point Location;
 	private static Random rand;
 	private static Helicopter heli;
 	private static int fire_size;
+	private State currentState;
 
-	public Fire() {
+	public Fire(){
 		// Empty Contructor
 		rand = new Random();
 		// heli = helicopter;
 	}
-
-	public Fire(int fire_size, Point p, Helicopter helicopter) {
+	
+	public Fire(int fire_size, Point p) {
 		Location = p;
 		Fire.fire_size = fire_size;
-		heli = helicopter;
+		currentState = UnstartedFire.instance();
 
 	}
-
+	public State getState(){
+		return currentState;
+	}
 	public Point location() {
 		return Location;
 	}
@@ -42,6 +46,10 @@ public class Fire {
 		}
 	}
 
+	public void setCurrentState(State state){
+		this.currentState = state;
+	}
+
 	public static void extinguishFire() {
 		// fire_size -= Math.min(heli.water_tank() / 5, rand.nextInt(heli.water_tank() /
 		// 3));
@@ -52,17 +60,21 @@ public class Fire {
 		}
 	}
 
-	public void draw(Graphics g) {
-		g.setColor(ColorUtil.MAGENTA);
-		g.fillArc(Location.getX(), Location.getY(), fire_size, fire_size, 0,
-				360);
-		g.setFont(Game.font);
-		g.drawString("" + fire_size, Location.getX() + fire_size + 10,
-				Location.getY() + fire_size + 5);
+	@Override
+	public void draw(Graphics g, Point containerOrigin) {
+		// TODO Auto-generated method stub
+		if(this.currentState == StartedFire.instance()){
+			g.setColor(ColorUtil.MAGENTA);
+			g.fillArc(Location.getX(), Location.getY(), fire_size, fire_size, 0,
+					360);
+			g.setFont(Game.font);
+			g.drawString("" + fire_size, Location.getX() + fire_size + 10,
+					Location.getY() + fire_size + 5);
 
-		g.setColor(ColorUtil.YELLOW);
-		g.drawString("x: " + Location.getX() + ", " + "y: " + Location.getY(),
-				Location.getX(), Location.getY());
-
+			g.setColor(ColorUtil.YELLOW);
+			g.drawString("x: " + Location.getX() + ", " + "y: " + Location.getY(),
+					Location.getX(), Location.getY());
+		}
+		
 	}
 }

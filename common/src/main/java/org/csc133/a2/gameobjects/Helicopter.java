@@ -2,6 +2,7 @@ package org.csc133.a2.gameobjects;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
 import org.csc133.a2.interfaces.Steerable;
@@ -32,12 +33,13 @@ public class Helicopter extends Movable implements Steerable{
 	private final int boxSize;
     private static Random rand;
     private final int heli_size;
+    private Dimension worldSize;
 
-    public Helicopter() {
+    public Helicopter(Dimension worldSize) {
         water_tank = 0;
         isColliding = false;
         river = new River();
-		heli = new Helipad();
+		heli = new Helipad(worldSize);
         // fire = new Fire();
         // fire_location = fire.location();
         // fire_size = fire.size();
@@ -55,6 +57,7 @@ public class Helicopter extends Movable implements Steerable{
         startY = location.getY();
         rand = new Random();
         fuel = 12000;
+        this.worldSize = worldSize;
     }
 
 	public void moveForward(){

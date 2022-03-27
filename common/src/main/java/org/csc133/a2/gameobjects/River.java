@@ -11,6 +11,7 @@ public class River extends Fixed{
     private final int river_height;
 
     public River() {
+        //pass in size
 		Location = new Point(0, Game.Disp_H - 1300);
 		river_height = 300;
 		river_width = Game.Disp_W - 10;

@@ -35,6 +35,8 @@ public class Game extends Form implements Runnable{
 		this.setLayout(new BorderLayout());
 		this.getStyle().setBgColor(ColorUtil.BLACK);
 		this.add(BorderLayout.CENTER, mapview);
+        this.add(BorderLayout.NORTH, cockpitView);
+        this.add(BorderLayout.SOUTH, clusterView);
         timer.schedule(100, true, this);
         addKeyListener('Q', new exit(world));
         addKeyListener(-93, new TurnLeftCommand(world));

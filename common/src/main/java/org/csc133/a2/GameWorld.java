@@ -16,19 +16,29 @@ public class GameWorld extends Form {
 	// private int fire_size_left;
 	// private int fire_size_right;
 	// private ArrayList<Fire> fires;
-	private ArrayList<building> buildings;
 	private ArrayList<GameObjects> objs;
-	//making it private
+	// making it private
 	private Helicopter heli;
 	private Point location_left;
+	/**
+	 * Building variables
+	 */
+	private ArrayList<building> buildings;
 	private Point building_leftPoint;
 	private Point building_rightPoint;
 	private Point building_topPoint;
 	private Point location_right;
 	private Point location_center;
+	private building b_top;
+	private building b_left;
+	private building b_right;
+
+	/**
+	 * Other variables
+	 */
 	private Helipad pad;
 	private River river;
-	// private Fire fire_center;
+	private Fire fire_center;
 	// private Fire fire_right;
 	// private Fire fire_left;
 	private Dimension size;
@@ -37,53 +47,80 @@ public class GameWorld extends Form {
 		/*
 		 * Initiliazing variables
 		 */
-		heli = new Helicopter();
-		pad = new Helipad();
+		heli = new Helicopter(size);
+		pad = new Helipad(size);
 		river = new River();
 		rand = random.nextInt(200);
-		// fires = new ArrayList<Fire>();
+
 		objs = new ArrayList<GameObjects>();
-		/*
-		 * Fire Locations
-		 */
-		// location_left = new Point((pad.getCenter().getX() - Game.Disp_H / 2) + rand, (pad.getCenter().getY() - Game.Disp_W) + rand);
-		// location_right = new Point((pad.getCenter().getX() - Game.Disp_H / 2) + rand, (pad.getCenter().getY() - Game.Disp_W / 3) + rand); //
-		// // Showing up on screen
-		// location_center = new Point((pad.getCenter().getX() + Game.Disp_H / 8) + rand, (pad.getCenter().getY() - Game.Disp_W / 3) + rand);
-		// /*
-		//  * Fire Sizes
-		//  */
-		// fire_size_center = random.nextInt(100) + 200;
-		// fire_size_left = random.nextInt(100) + 150;
-		// fire_size_right = random.nextInt(50) + 100;
-		// /*
-		//  * Fires on the screen; class objects
-		//  */
-		// fire_center = new Fire(fire_size_center, location_center, heli);
-		// fire_left = new Fire(fire_size_left, location_left, heli);
-		// fire_right = new Fire(fire_size_right, location_right, heli);
-		// fires.add(fire_center);
-		// fires.add(fire_left);
-		// fires.add(fire_right);
+		// top_building();
+		// right_building();
+		// left_building();
+		location_center = new Point((pad.getCenter().getX() + Game.Disp_H / 8) + rand,
+				(pad.getCenter().getY() - Game.Disp_W / 3) + rand);
+
+		int fire_size_center = random.nextInt(100) + 200;
+
+		fire_center = new Fire(fire_size_center, location_center);
 
 		objs.add(heli);
 		objs.add(river);
 		objs.add(pad);
+		objs.add(fire_center);
+
+		System.err.println("State: " + fire_center.getState());
 
 	}
 
 	public GameWorld() {
-
 	}
 
-	public ArrayList<building> buildingObjs(){
+	public ArrayList<building> buildingObjs() {
 		buildings = new ArrayList<building>();
-		//building_leftPoint = new Point(x, y)
+		// building_leftPoint = new Point(x, y)
 		return buildings;
 	}
+
 	public ArrayList<GameObjects> getGameObjectCollection() {
 		return objs;
 	}
+
+	public void top_building() {
+		int building_height = 100;
+		int building_width = 400;
+		building_topPoint = new Point(size.getHeight() / 2,
+				(int) (size.getWidth() * 1.5));
+		b_top = new building(building_topPoint,
+				building_height, building_width);
+
+		buildings.add(b_top);
+	}
+
+	public void right_building() {
+		int building_height = 250;
+		int building_width = 100;
+		building_topPoint = new Point(size.getHeight(), size.getWidth());
+		b_right = new building(building_topPoint,
+				building_height, building_width);
+
+		buildings.add(b_right);
+	}
+
+	public void left_building() {
+		int building_height = 200;
+		int building_width = 75;
+		building_topPoint = new Point(size.getHeight(), size.getWidth());
+		b_left = new building(building_topPoint,
+				building_height, building_width);
+
+		buildings.add(b_left);
+	}
+
+	// public void building_draw(){
+	// for(int i= 0; i< buildings.size(); i++){
+	// buildings.get(i).draw(g, containerOrigin);
+	// }
+	// }
 
 	public void quit() {
 		Display.getInstance().exitApplication();
