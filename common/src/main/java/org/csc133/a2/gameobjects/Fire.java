@@ -4,21 +4,21 @@ import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
-import org.csc133.a2.gameobjects.*;
+//import org.csc133.a2.gameobjects.*;
 
 import java.util.Random;
 
 public class Fire extends Fixed {
 
 	Point Location;
-	private static Random rand;
+	//private static Random rand;
 	private static Helicopter heli;
 	private static int fire_size;
 	private State currentState;
 
 	public Fire(){
 		// Empty Contructor
-		rand = new Random();
+		//rand = new Random();
 		// heli = helicopter;
 	}
 	
@@ -27,6 +27,10 @@ public class Fire extends Fixed {
 		Fire.fire_size = fire_size;
 		currentState = UnstartedFire.instance();
 
+	}
+	public void Startfire(Point Location){
+		this.Location = Location;
+		this.currentState.updateState(this);
 	}
 	public State getState(){
 		return currentState;
@@ -62,7 +66,6 @@ public class Fire extends Fixed {
 
 	@Override
 	public void draw(Graphics g, Point containerOrigin) {
-		// TODO Auto-generated method stub
 		if(this.currentState == StartedFire.instance()){
 			g.setColor(ColorUtil.MAGENTA);
 			g.fillArc(Location.getX(), Location.getY(), fire_size, fire_size, 0,

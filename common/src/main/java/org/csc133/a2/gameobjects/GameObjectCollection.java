@@ -11,13 +11,11 @@ public class GameObjectCollection extends GameObjects implements Iterable {
 
     @Override
     public void draw(Graphics g, Point containerOrigin) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public Iterator iterator() {
-        // TODO Auto-generated method stub
         return null;
     }
 }

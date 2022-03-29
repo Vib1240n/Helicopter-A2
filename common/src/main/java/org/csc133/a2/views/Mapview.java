@@ -26,7 +26,6 @@ public class Mapview extends Container {
 
 	@Override
 	public void paint(Graphics g) {
-		// iterator arraylist and draw everything
 		super.paint(g);
 		for (GameObjects go : gw.getGameObjectCollection()) {
 			go.draw(g, new Point(this.getX(), this.getY()));

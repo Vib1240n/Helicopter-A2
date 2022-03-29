@@ -9,7 +9,6 @@ public class ExtinguishFire extends State{
         return instance;
     }
 
-    // Business logic and state transition
     @Override
     public void updateState(Fire fire) {
 

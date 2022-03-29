@@ -15,8 +15,6 @@ import org.csc133.a2.views.Mapview;
 import static com.codename1.ui.CN.SIZE_SMALL;
 
 public class Game extends Form implements Runnable{
-    public final static int Disp_H = Display.getInstance().getDisplayHeight();
-    public final static int Disp_W = Display.getInstance().getDisplayWidth();
     public static Font font = Font.createSystemFont(Font.FACE_SYSTEM,
             Font.STYLE_PLAIN, SIZE_SMALL);
     private final GameWorld world;
@@ -29,13 +27,15 @@ public class Game extends Form implements Runnable{
     public Game() {
         world = new GameWorld();
 		mapview = new Mapview(world);
+		clusterView = new ControlCluster(world);
+		cockpitView = new GlassCockpit(world);
         tick = 0;
         timer = new UITimer(this);
-		setTitle("Hornets");
+		//setTitle("");
 		this.setLayout(new BorderLayout());
 		this.getStyle().setBgColor(ColorUtil.BLACK);
+		this.add(BorderLayout.NORTH, cockpitView);
 		this.add(BorderLayout.CENTER, mapview);
-        this.add(BorderLayout.NORTH, cockpitView);
         this.add(BorderLayout.SOUTH, clusterView);
         timer.schedule(100, true, this);
         addKeyListener('Q', new exit(world));
@@ -47,14 +47,6 @@ public class Game extends Form implements Runnable{
         //addKeyListener('f', (evt) -> Fire.extinguishFire());
 		this.show();
 
-    }
-
-    public static int getMin_disp() {
-        return Math.min(Disp_H, Disp_W);
-    }
-
-    public static int getMax_disp() {
-        return Math.max(Disp_H, Disp_W);
     }
 
     public void paint(Graphics g) {

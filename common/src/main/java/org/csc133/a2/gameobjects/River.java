@@ -2,6 +2,7 @@ package org.csc133.a2.gameobjects;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
 import org.csc133.a2.Game;
 
@@ -9,12 +10,14 @@ public class River extends Fixed{
     Point Location;
     private final int river_width;
     private final int river_height;
+    private Dimension size;
 
-    public River() {
+    public River(Dimension size) {
         //pass in size
-		Location = new Point(0, Game.Disp_H - 1300);
-		river_height = 300;
-		river_width = Game.Disp_W - 10;
+        this.size = size;
+		Location = new Point(size.getHeight() - size.getHeight(), size.getWidth()/7);
+		river_height = 150;
+		river_width = size.getWidth() - 10;
 	}
 
     /**
@@ -36,16 +39,8 @@ public class River extends Fixed{
      */
 	@Override
 	public void draw(Graphics g, Point containerOrigin) {
-        g.setColor(ColorUtil.GREEN);
-        g.drawString("X: " +containerOrigin.getX() + "Y: "+ containerOrigin.getY(), containerOrigin.getX(), containerOrigin.getY());
-        g.setColor(ColorUtil.GREEN);
-
-        g.drawString("X: " + Location.getX() + "Y: "+ Location.getY(), Location.getX(), Location.getY());
-
-        g.drawString("X: " + (Location.getX() + river_width) + " Y: "+ (Location.getY() + river_height), Location.getX() + river_width - 200, Location.getY() + river_height);
 
 		g.setColor(ColorUtil.BLUE);
-        g.drawRect(Location.getX(), Location.getY(), river_width,
-                river_height);
+        g.drawRect(Location.getX() + containerOrigin.getX(), Location.getY() + containerOrigin.getY(), river_width, river_height);
 	}
 }

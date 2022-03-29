@@ -9,7 +9,6 @@ public class StartedFire extends State{
         return instance;
     }
 
-    // Business logic and state transition
     @Override
     public void updateState(Fire fire) {
         fire.setCurrentState(ExtinguishFire.instance());

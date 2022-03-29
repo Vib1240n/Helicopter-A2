@@ -20,8 +20,8 @@ public class Helicopter extends Movable implements Steerable{
     // private static int fire_radius;
     private static int heli_radius;
 	private final Helipad heli;
-    private static float fuel;
-    private static int speed;
+    private int fuel;
+    private int speed;
     private static double angle;
     private static int endX;
     private static int endY;
@@ -35,10 +35,11 @@ public class Helicopter extends Movable implements Steerable{
     private final int heli_size;
     private Dimension worldSize;
 
-    public Helicopter(Dimension worldSize) {
+    public Helicopter(Dimension Size) {
+		this.worldSize = Size;
         water_tank = 0;
         isColliding = false;
-        river = new River();
+        river = new River(Size);
 		heli = new Helipad(worldSize);
         // fire = new Fire();
         // fire_location = fire.location();
@@ -57,7 +58,6 @@ public class Helicopter extends Movable implements Steerable{
         startY = location.getY();
         rand = new Random();
         fuel = 12000;
-        this.worldSize = worldSize;
     }
 
 	public void moveForward(){
@@ -126,14 +126,18 @@ public class Helicopter extends Movable implements Steerable{
         isCollidingfire = true;
     }
 
+	public int get_speed(){
+		return this.speed;
+	}
+
     public void fillTank() {
         if (isColliding && water_tank < 1000) {
             water_tank += 100;
         }
     }
 
-    public static int getFuel() {
-        return (int) fuel;
+    public int getFuel() {
+        return fuel;
     }
 
     protected void setFuel(float fuel) {
@@ -145,13 +149,18 @@ public class Helicopter extends Movable implements Steerable{
         // TODO Auto-generated method stub add container origin
         g.setFont(Game.font);
         g.setColor(ColorUtil.YELLOW);
-        g.fillArc(startX - heli_radius, startY - heli_radius, heli_size,
-                heli_size, 0, 360);
+        g.fillArc((startX - heli_radius) + containerOrigin.getX(),
+				(startY - heli_radius) + containerOrigin.getY(),
+				heli_size, heli_size, 0, 360);
         g.setColor(ColorUtil.YELLOW);
-        g.drawLine(startX, startY, endX, endY);
-        g.drawString("Speed: " + speed, startX + 15, startY + 15);
+        g.drawLine(startX + containerOrigin.getX(), startY + containerOrigin.getY(),
+				endX + containerOrigin.getX(), endY + containerOrigin.getY());
+        g.drawString("Speed: " + speed,
+				(startX + 15) + containerOrigin.getX(), (startY + 15) + containerOrigin.getY());
 
         g.setColor(ColorUtil.YELLOW);
-        g.drawString("Water: " + water_tank, heli.getCenter().getX() - boxSize / 2, (heli.getCenter().getY() + 40) + boxSize / 2);
+        g.drawString("Water: " + water_tank,
+				(heli.getCenter().getX() - boxSize / 2) + containerOrigin.getX(),
+				((heli.getCenter().getY() + 40) + boxSize / 2)+ containerOrigin.getY());
     }
 }
