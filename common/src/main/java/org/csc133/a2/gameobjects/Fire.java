@@ -23,15 +23,18 @@ public class Fire extends Fixed {
 	}
 	
 	public Fire(int fire_size, Point p) {
-		Location = p;
 		Fire.fire_size = fire_size;
 		currentState = UnstartedFire.instance();
 
 	}
+
 	public void Startfire(Point Location){
 		this.Location = Location;
 		this.currentState.updateState(this);
 	}
+
+	
+
 	public State getState(){
 		return currentState;
 	}

@@ -77,7 +77,7 @@ public class Helicopter extends Movable implements Steerable{
 		endX = (int) (endX + Math.cos(angle));
 		endY = (int) (endY - Math.sin(angle));
 	}
-
+    //heading math.todegrees getter method
 	@Override
 	public void steerRight(){
 		angle -= Math.toRadians(15);
@@ -90,13 +90,15 @@ public class Helicopter extends Movable implements Steerable{
     }
 
     public void updateForward() {
+
         location.setX((int) (location.getX() + Math.cos(angle) * speed));
-        location.setY((int) (location.getY() - Math.sin(angle) * speed));
         startX = location.getX();
+        location.setY((int) (location.getY() - Math.sin(angle) * speed));
         startY = location.getY();
         endY = (int) (location.getY() - Math.sin(angle));
         endX = (int) (location.getX() + Math.cos(angle) + heli_radius * 3);
         fuel -= Math.max(startX, startY) * Math.tan(angle);
+
         setFuel(fuel);
     }
 

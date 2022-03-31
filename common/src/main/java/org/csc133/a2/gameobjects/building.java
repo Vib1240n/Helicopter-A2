@@ -1,6 +1,7 @@
 package org.csc133.a2.gameobjects;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
@@ -18,28 +19,31 @@ public class building extends Fixed {
 		this.building_value = value;
         this.location = location;
     }
+
     public void setFireInBuilding(Fire f){ 
-		f.Startfire(location);
+        Point new_location = new Point( new Random().nextInt(building_width) +location.getX(), new Random().nextInt(building_height) + location.getY());
+		f.Startfire(new_location);
     }
 
     @Override
     public void draw(Graphics g, Point containerOrigin){
-		final Point loc =
-				new Point (location.getX() + containerOrigin.getX(),
-						location.getY() + containerOrigin.getY());
+		// loc =
+		// 		new Point (location.getX() + containerOrigin.getX(),
+		// 				location.getY() + containerOrigin.getY());
 
-		g.setColor(ColorUtil.rgb(255,0,0));
-		g.drawString("X: " + location.getX(),  loc.getX() ,
-				loc.getY());
-		g.drawString("Y: " + loc.getY(), loc.getX() + 150,
-				loc.getY());
+//		g.setColor(ColorUtil.rgb(255,0,0));
+//		g.drawString("X: " + location.getX(),  loc.getX() ,
+//				loc.getY());
+//		g.drawString("Y: " + loc.getY(), loc.getX() + 150,
+//				loc.getY());
 		g.setColor(ColorUtil.rgb(255,0,0));
 		g.drawString("V: " + this.building_value,
-				loc.getX() + building_width,
-				loc.getY() + (int)(building_height / 1.2));
+				location.getX() + building_width,
+				location.getY() + (int)(building_height / 1.2));
 
         g.setColor(ColorUtil.rgb(255, 0, 0));
-        g.drawRect(loc.getX(), loc.getY(), building_width, building_height);
+        g.drawRect(location.getX() + containerOrigin.getX(), location.getY() 
+                + containerOrigin.getY(), building_width, building_height);
     }
 
 }

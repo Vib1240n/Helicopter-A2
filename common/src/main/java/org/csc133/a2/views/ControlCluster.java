@@ -25,7 +25,7 @@ public class ControlCluster extends Container{
 
      public ControlCluster(GameWorld world){
          this.gw = world;
-		 container_center = new Container();
+		 container_center = new Container(new BorderLayout());
 		 container_left = new Container();
 		 container_right = new Container();
 
@@ -41,7 +41,7 @@ public class ControlCluster extends Container{
          fight = this.ButtonMaker("Fight", new Fight(gw));
          drink = this.ButtonMaker("Drink", new Drink(gw));
 
-		 container_center.add(exit);
+         container_center.add(BorderLayout.CENTER, exit);
 		 container_left.add(left);
 		 container_left.add(right);
 		 container_left.add(fight);

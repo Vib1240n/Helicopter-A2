@@ -10,7 +10,7 @@ public class River extends Fixed{
     Point Location;
     private final int river_width;
     private final int river_height;
-    private Dimension size;
+    private final Dimension size;
 
     public River(Dimension size) {
         //pass in size

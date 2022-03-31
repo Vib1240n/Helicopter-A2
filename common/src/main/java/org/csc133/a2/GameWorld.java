@@ -54,8 +54,8 @@ public class GameWorld extends Form {
 		river = new River(size);
 		rand = random.nextInt(200);
 		heli = new Helicopter(size);
-		objs = new ArrayList<GameObjects>();
-		buildings = new ArrayList<building>();
+		objs = new ArrayList<>();
+		buildings = new ArrayList<>();
 
 
 		top_building();
@@ -82,12 +82,6 @@ public class GameWorld extends Form {
 		size = new Dimension();
 		init();
 	}
-
-	 public ArrayList<building> buildingObjs() {
-	 buildings = new ArrayList<building>();
-	 // building_leftPoint = new Point(x, y)
-	 return buildings;
-	 }
 
 	public ArrayList<GameObjects> getGameObjectCollection() {
 		return objs;

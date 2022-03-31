@@ -58,6 +58,7 @@ public class Game extends Form implements Runnable{
     public void run() {
         int return_tick = Tick();
         world.updateTick(return_tick);
+        cockpitView.update();
         repaint();
     }
 
