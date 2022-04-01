@@ -9,8 +9,7 @@ import org.csc133.a2.interfaces.Steerable;
 
 import java.util.Random;
 
-
-public class Helicopter extends Movable implements Steerable{
+public class Helicopter extends Movable implements Steerable {
     static Point location;
     static River river;
     static com.codename1.ui.geom.Point river_location;
@@ -19,7 +18,7 @@ public class Helicopter extends Movable implements Steerable{
     // private static int fire_size;
     // private static int fire_radius;
     private static int heli_radius;
-	private final Helipad heli;
+    private final Helipad heli;
     private int fuel;
     private int speed;
     private static double angle;
@@ -30,17 +29,17 @@ public class Helicopter extends Movable implements Steerable{
     private static int water_tank;
     private static boolean isColliding;
     private static boolean isCollidingfire;
-	private final int boxSize;
+    private final int boxSize;
     private static Random rand;
     private final int heli_size;
     private Dimension worldSize;
 
     public Helicopter(Dimension Size) {
-		this.worldSize = Size;
+        this.worldSize = Size;
         water_tank = 0;
         isColliding = false;
         river = new River(Size);
-		heli = new Helipad(worldSize);
+        heli = new Helipad(worldSize);
         // fire = new Fire();
         // fire_location = fire.location();
         // fire_size = fire.size();
@@ -48,7 +47,7 @@ public class Helicopter extends Movable implements Steerable{
         isCollidingfire = false;
         river_location = river.getLocation();
         location = heli.getCenter();
-		boxSize = heli.boxSize;
+        boxSize = heli.boxSize;
         heli_size = 35;
         heli_radius = heli_size / 2;
         angle = Math.toRadians(90);
@@ -60,33 +59,39 @@ public class Helicopter extends Movable implements Steerable{
         fuel = 12000;
     }
 
-	public void moveForward(){
-		if (speed < 10) {
-			speed++;
-		}
-	}
+    public void moveForward() {
+        if (speed < 10) {
+            speed++;
+        }
+    }
 
-	public void brake(){
-		if (speed > 0) {
-			speed--;
-		}
-	}
-	@Override
-	public void steerLeft(){
-		angle += Math.toRadians(15);
-		endX = (int) (endX + Math.cos(angle));
-		endY = (int) (endY - Math.sin(angle));
-	}
-    //heading math.todegrees getter method
-	@Override
-	public void steerRight(){
-		angle -= Math.toRadians(15);
-		endY = (int) (endX - Math.sin(angle));
-		endX = (int) (endY + Math.cos(angle));
-	}
+    public void brake() {
+        if (speed > 0) {
+            speed--;
+        }
+    }
+
+    @Override
+    public void steerLeft() {
+        angle += Math.toRadians(15);
+        endX = (int) (endX + Math.cos(angle));
+        endY = (int) (endY - Math.sin(angle));
+    }
+
+    // heading math.todegrees getter method
+    @Override
+    public void steerRight() {
+        angle -= Math.toRadians(15);
+        endY = (int) (endX - Math.sin(angle));
+        endX = (int) (endY + Math.cos(angle));
+    }
 
     public int water_tank() {
         return water_tank;
+    }
+
+    public int getHeading(){
+        return (int)(angle);
     }
 
     public void updateForward() {
@@ -112,25 +117,23 @@ public class Helicopter extends Movable implements Steerable{
         }
     }
 
-    public void isCollisionFire(Fire fire) {
-
-        if (startX > fire.location().getX() && startX < (fire.location().getX()
-                + fire.size())) {
-            isCollidingfire = startY > fire.location().getY() &&
-                    startY < fire.location().getY() + fire.size();
-            if (isCollidingfire && fire.size() > 0) {
-                Fire.extinguishFire();
-                water_tank = 0;
-            }
-        } // else{
-          // isCollidingfire = false;
-          // }
-        isCollidingfire = true;
+    public boolean isCollisionFire(Fires fires) {
+        for (Fire fire : fires) {
+            if (startX > fire.location().getX() && startX < (fire.location().getX() + fire.size())) { isCollidingfire = startY > fire.location().getY() && startY < fire.location().getY() + fire.size();
+                if (isCollidingfire && fire.size() > 0) {
+                    return true;
+                }
+            } // else{
+              // isCollidingfire = false;
+              // }
+            isCollidingfire = true;
+        }
+        return false;
     }
 
-	public int get_speed(){
-		return this.speed;
-	}
+    public int get_speed() {
+        return this.speed;
+    }
 
     public void fillTank() {
         if (isColliding && water_tank < 1000) {
@@ -152,17 +155,17 @@ public class Helicopter extends Movable implements Steerable{
         g.setFont(Game.font);
         g.setColor(ColorUtil.YELLOW);
         g.fillArc((startX - heli_radius) + containerOrigin.getX(),
-				(startY - heli_radius) + containerOrigin.getY(),
-				heli_size, heli_size, 0, 360);
+                (startY - heli_radius) + containerOrigin.getY(),
+                heli_size, heli_size, 0, 360);
         g.setColor(ColorUtil.YELLOW);
         g.drawLine(startX + containerOrigin.getX(), startY + containerOrigin.getY(),
-				endX + containerOrigin.getX(), endY + containerOrigin.getY());
+                endX + containerOrigin.getX(), endY + containerOrigin.getY());
         g.drawString("Speed: " + speed,
-				(startX + 15) + containerOrigin.getX(), (startY + 15) + containerOrigin.getY());
+                (startX + 15) + containerOrigin.getX(), (startY + 15) + containerOrigin.getY());
 
         g.setColor(ColorUtil.YELLOW);
         g.drawString("Water: " + water_tank,
-				(heli.getCenter().getX() - boxSize / 2) + containerOrigin.getX(),
-				((heli.getCenter().getY() + 40) + boxSize / 2)+ containerOrigin.getY());
+                (heli.getCenter().getX() - boxSize / 2) + containerOrigin.getX(),
+                ((heli.getCenter().getY() + 40) + boxSize / 2) + containerOrigin.getY());
     }
 }

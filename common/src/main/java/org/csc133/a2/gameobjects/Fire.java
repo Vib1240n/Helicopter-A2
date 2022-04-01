@@ -2,8 +2,8 @@ package org.csc133.a2.gameobjects;
 
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.Graphics;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.geom.Point;
-import org.csc133.a2.Game;
 //import org.csc133.a2.gameobjects.*;
 
 import java.util.Random;
@@ -15,6 +15,7 @@ public class Fire extends Fixed {
 	private static Helicopter heli;
 	private static int fire_size;
 	private State currentState;
+	private Dimension size;
 
 	public Fire(){
 		// Empty Contructor
@@ -22,7 +23,8 @@ public class Fire extends Fixed {
 		// heli = helicopter;
 	}
 	
-	public Fire(int fire_size, Point p) {
+	public Fire(Dimension size, int fire_size) {
+		this.size = size;
 		Fire.fire_size = fire_size;
 		currentState = UnstartedFire.instance();
 
@@ -46,10 +48,13 @@ public class Fire extends Fixed {
 		return fire_size;
 	}
 
-	public void grow_fire() {
+	public int getArea(){
+		return (int)(Math.PI * (fire_size/2 * fire_size/2));
+	}
 
+	public void grow_fire() {
 		if (fire_size < 470) {
-			fire_size += new Random().nextInt(5);
+			fire_size += new Random().nextInt(2);
 		}
 	}
 
@@ -57,25 +62,16 @@ public class Fire extends Fixed {
 		this.currentState = state;
 	}
 
-	public static void extinguishFire() {
-		// fire_size -= Math.min(heli.water_tank() / 5, rand.nextInt(heli.water_tank() /
-		// 3));
-		if (fire_size - heli.water_tank() / 5 < 0) {
-			fire_size = 0;
-		} else {
-			fire_size -= heli.water_tank() / 5;
-		}
+	public void extinguishFire() {
+		fire_size -= heli.water_tank() /5;
 	}
 
 	@Override
 	public void draw(Graphics g, Point containerOrigin) {
-		if(this.currentState == StartedFire.instance()){
+		if(this.currentState == StartedFire.instance() && fire_size> 0){
 			g.setColor(ColorUtil.MAGENTA);
 			g.fillArc(Location.getX(), Location.getY(), fire_size, fire_size, 0,
 					360);
-			g.setFont(Game.font);
-			g.drawString("" + fire_size, Location.getX() + fire_size + 10,
-					Location.getY() + fire_size + 5);
 
 			g.setColor(ColorUtil.YELLOW);
 			g.drawString("x: " + Location.getX() + ", " + "y: " + Location.getY(),

@@ -44,7 +44,7 @@ public class Game extends Form implements Runnable{
         addKeyListener(-91, new Accelerate(world));
         addKeyListener(-92, new Brake(world));
         addKeyListener('d', new Drink(world));
-        //addKeyListener('f', (evt) -> Fire.extinguishFire());
+        addKeyListener('f', new Fight(world));
 		this.show();
 
     }

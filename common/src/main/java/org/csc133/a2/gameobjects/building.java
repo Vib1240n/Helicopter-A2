@@ -21,8 +21,10 @@ public class building extends Fixed {
     }
 
     public void setFireInBuilding(Fire f){ 
-        Point new_location = new Point( new Random().nextInt(building_width) +location.getX(), new Random().nextInt(building_height) + location.getY());
-		f.Startfire(new_location);
+        if(building_width != 0 && building_height != 0){
+            Point new_location = new Point( new Random().nextInt(building_width) +location.getX() - 50, new Random().nextInt(building_height) + location.getY() - 50);
+            f.Startfire(new_location);
+        }
     }
 
     @Override

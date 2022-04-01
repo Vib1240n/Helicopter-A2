@@ -7,12 +7,13 @@ import org.csc133.a2.GameWorld;
 
 public class Fight extends Command implements ActionListener {
 	private final GameWorld gw;
+	
 	public Fight(GameWorld gw){
 		super("Fight");
 		this.gw = gw;
 	}
 
 	public void actionPerformed(ActionEvent e){
-		
+		gw.Fight();
 	}
 }
